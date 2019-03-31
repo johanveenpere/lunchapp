@@ -53,11 +53,14 @@ public class LoginActivity extends Activity {
         loginbutton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View view){
-                        testserverconnection loginquery = new testserverconnection();
-                        TextInputEditText username = findViewById(R.id.username);
-                        TextInputEditText password = findViewById(R.id.password);
-                        loginquery.logIn(username.getText().toString(), password.getText().toString());
-                        loginquery.execute();
+                        //testserverconnection loginquery = new testserverconnection();
+                        //TextInputEditText username = findViewById(R.id.username);
+                        //TextInputEditText password = findViewById(R.id.password);
+                        //loginquery.logIn(username.getText().toString(), password.getText().toString());
+                        //loginquery.execute();
+                        LogIn loginquery = new LogIn();
+                        loginquery.setActivityView(R.);
+
                     }
                 }
 
