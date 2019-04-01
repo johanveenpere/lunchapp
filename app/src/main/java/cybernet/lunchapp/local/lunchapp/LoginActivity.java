@@ -32,6 +32,8 @@ import android.widget.EditText;
 import android.support.design.widget.TextInputEditText;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,13 +55,20 @@ public class LoginActivity extends Activity {
         loginbutton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View view){
-                        //testserverconnection loginquery = new testserverconnection();
-                        //TextInputEditText username = findViewById(R.id.username);
-                        //TextInputEditText password = findViewById(R.id.password);
-                        //loginquery.logIn(username.getText().toString(), password.getText().toString());
-                        //loginquery.execute();
+                        TextInputEditText username = findViewById(R.id.username);
+                        TextInputEditText password = findViewById(R.id.password);
+                        JSONObject loginData = new JSONObject();
+                        try {
+                            loginData.put("username", username);
+                            loginData.put("password", password);
+                            loginData.put("type", "2");
+                        }
+                        catch(org.json.JSONException exc) {
+
+                        }
                         LogIn loginquery = new LogIn();
-                        loginquery.setActivityView(R.);
+                        loginquery.setActivityView(findViewById(R.id.loginView));
+                        loginquery.execute(loginData);
 
                     }
                 }
