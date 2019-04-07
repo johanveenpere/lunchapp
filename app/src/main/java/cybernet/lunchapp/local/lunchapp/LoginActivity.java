@@ -18,6 +18,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.widget.Button;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
@@ -50,6 +51,7 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        final Activity context = this;
 
         Button loginbutton = findViewById(R.id.email_sign_in_button);
         loginbutton.setOnClickListener(
@@ -59,15 +61,16 @@ public class LoginActivity extends Activity {
                         TextInputEditText password = findViewById(R.id.password);
                         JSONObject loginData = new JSONObject();
                         try {
-                            loginData.put("username", username);
-                            loginData.put("password", password);
+                            loginData.put("username", username.getText().toString());
+                            loginData.put("password", password.getText().toString());
                             loginData.put("type", "2");
                         }
                         catch(org.json.JSONException exc) {
-
+                            Log.e("JSON error", exc.getMessage());
                         }
-                        LogIn loginquery = new LogIn();
-                        loginquery.setActivityView(findViewById(R.id.loginView));
+                        //ServerConnection test = new ServerConnection();
+                        //test.sendRequest(loginData);
+                        LogIn loginquery = new LogIn(context);
                         loginquery.execute(loginData);
 
                     }

@@ -14,25 +14,39 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.Socket;
 import java.io.PrintStream;
 
 
 public class MainActivity extends Activity {
-
+    getPeople getPeopleQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainlayout);
-
-        ScrollView lounad = new ScrollView(this);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(0,20,0,20);
+        getPeopleQuery = new getPeople(this);
+        JSONObject initGetPeopleRequest = new JSONObject();
+        try {
+            initGetPeopleRequest.put("username", getIntent().getExtras().getString("username"));
+            initGetPeopleRequest.put("password", getIntent().getExtras().getString("password"));
+            initGetPeopleRequest.put("type", "2");
+            getPeopleQuery.execute(initGetPeopleRequest);
+        }
+        catch(JSONException exc){
+            Log.d("JSON error", exc.getMessage());
+        }
+        //ScrollView lounad = new ScrollView(this);
+        //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        //params.setMargins(0,20,0,20);
         //Create a layout---------------
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        lounad.addView(linearLayout);
+        //LinearLayout linearLayout = new LinearLayout(this);
+        //linearLayout.setOrientation(LinearLayout.VERTICAL);
+        //lounad.addView(linearLayout);
 
         //----Create a TextView------
         /*
@@ -73,10 +87,16 @@ public class MainActivity extends Activity {
             linearLayout.addView(lunchOption);
         }
         */
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
-        this.setContentView(lounad);
+        //LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        //this.setContentView(lounad);
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getPeopleQuery = new getPeople(this);
     }
 
 }
