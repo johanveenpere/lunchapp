@@ -15,13 +15,13 @@ public class LogIn extends updateUI{
     }
 
      protected void onPostExecute(JSONArray result){
-        Activity activity = mWeakActivity.get();
-        if(result.length() > 0){
-            //
-            Intent startMainActivity = new Intent(activity, MainActivity.class);
-            startMainActivity.putExtra("username" , username);
-            startMainActivity.putExtra("password", password);
-            activity.startActivity(startMainActivity);
+        if(result != null) {
+            Activity activity = mWeakActivity.get();
+                //
+                Intent startMainActivity = new Intent(activity, MainActivity.class);
+                startMainActivity.putExtra("username", username);
+                startMainActivity.putExtra("password", password);
+                activity.startActivity(startMainActivity);
         }
      }
 }

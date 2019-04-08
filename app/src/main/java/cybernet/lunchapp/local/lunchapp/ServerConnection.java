@@ -14,7 +14,7 @@ public class ServerConnection {
     public JSONArray sendRequest (JSONObject request){
         JSONArray relevantPeople;
         try{
-            Socket serverconnection = new Socket("192.168.1.138", 27015);
+            Socket serverconnection = new Socket("192.168.137.1", 27015);
             PrintStream toServer = new PrintStream(serverconnection.getOutputStream());
             //toServer.print("{\"username\":\"johan\", \"password\":\"sala\", \"type\":\"2\"}");
             toServer.print(request.toString());
@@ -22,10 +22,6 @@ public class ServerConnection {
             Log.d("server response", serverResponse);
             try {
                 relevantPeople = new JSONArray(serverResponse);
-                //int len = relevantPeople.length();
-                //for(int i = 0; i < len; i++){
-                //    relevantPeople.getJSONObject(i);
-                //}
                 serverconnection.close();
                 return relevantPeople;
             }

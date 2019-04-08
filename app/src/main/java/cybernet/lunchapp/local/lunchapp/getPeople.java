@@ -26,7 +26,7 @@ public class getPeople extends updateUI  {
     protected void onPostExecute(JSONArray result) {
         Activity activity = mWeakActivity.get();
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ScrollView scrollview = new ScrollView(activity);
+        ScrollView scrollview = activity.findViewById(R.id.);
         LinearLayout userList = new LinearLayout(activity);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         userList.setOrientation(LinearLayout.VERTICAL);

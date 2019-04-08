@@ -63,7 +63,7 @@ public class LoginActivity extends Activity {
                         try {
                             loginData.put("username", username.getText().toString());
                             loginData.put("password", password.getText().toString());
-                            loginData.put("type", "2");
+                            loginData.put("type", "1");
                         }
                         catch(org.json.JSONException exc) {
                             Log.e("JSON error", exc.getMessage());
