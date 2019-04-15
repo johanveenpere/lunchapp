@@ -26,7 +26,7 @@ public class getPeople extends updateUI  {
     protected void onPostExecute(JSONArray result) {
         Activity activity = mWeakActivity.get();
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        ScrollView scrollview = activity.findViewById(R.id.);
+        ScrollView scrollview = activity.findViewById(R.id.mainView);
         LinearLayout userList = new LinearLayout(activity);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         userList.setOrientation(LinearLayout.VERTICAL);
@@ -39,6 +39,7 @@ public class getPeople extends updateUI  {
                 name.setText(interestingPerson.getString("name"));
                 TextView profession = user.findViewById(R.id.profession);
                 profession.setText(interestingPerson.getString("job"));
+                user.setTag(interestingPerson.getString("id"));
                 userList.addView(user);
             }
             catch(JSONException exc){
@@ -47,6 +48,5 @@ public class getPeople extends updateUI  {
 
         }
         scrollview.addView(userList);
-        activity.setContentView(scrollview);
     }
 }

@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.PorterDuff;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.Button;
 import android.os.Bundle;
@@ -23,23 +24,67 @@ import java.io.PrintStream;
 
 
 public class MainActivity extends Activity {
-    getPeople getPeopleQuery;
+    String username;
+    String password;
+    final Activity context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainlayout);
-        getPeopleQuery = new getPeople(this);
+        username = getIntent().getExtras().getString("username");
+        password = getIntent().getExtras().getString("password");
+        getPeople getPeopleInitQuery = new getPeople(this);
         JSONObject initGetPeopleRequest = new JSONObject();
         try {
-            initGetPeopleRequest.put("username", getIntent().getExtras().getString("username"));
-            initGetPeopleRequest.put("password", getIntent().getExtras().getString("password"));
+            initGetPeopleRequest.put("username", username);
+            initGetPeopleRequest.put("password", password);
             initGetPeopleRequest.put("type", "2");
-            getPeopleQuery.execute(initGetPeopleRequest);
+            getPeopleInitQuery.execute(initGetPeopleRequest);
         }
         catch(JSONException exc){
             Log.d("JSON error", exc.getMessage());
         }
+
+        ImageButton showPersonList = findViewById(R.id.button4);
+        showPersonList.setOnClickListener(
+               new View.OnClickListener(){
+                   public void onClick(View view){
+                       getPeople getPeopleQuery = new getPeople(context);
+                       JSONObject GetPeopleRequest = new JSONObject();
+                       try {
+                           GetPeopleRequest.put("username", username);
+                           GetPeopleRequest.put("password", password);
+                           GetPeopleRequest.put("type", "2");
+                           getPeopleQuery.execute(GetPeopleRequest);
+                       }
+                       catch(JSONException exc){
+                           Log.d("JSON error", exc.getMessage());
+                       }
+                   }
+               }
+        );
+
+        ImageButton showLunches = findViewById(R.id.button5);
+        showLunches.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View view){
+                        getLunches getLunchesQuery = new getLunches(context);
+                        JSONObject ProfileRequest = new JSONObject();
+                        try {
+                            ProfileRequest.put("username", username);
+                            ProfileRequest.put("password", password);
+                            ProfileRequest.put("type", "3");
+                            getLunchesQuery.execute(ProfileRequest);
+                        }
+                        catch(JSONException exc){
+                            Log.d("JSON error", exc.getMessage());
+                        }
+                    }
+                }
+        );
+
+        ImageButton showProfile = findViewById(R.id.button6);
         //ScrollView lounad = new ScrollView(this);
         //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         //params.setMargins(0,20,0,20);
@@ -96,7 +141,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        getPeopleQuery = new getPeople(this);
+        //getPeopleInitQuery = new getPeople(this);
     }
 
 }
