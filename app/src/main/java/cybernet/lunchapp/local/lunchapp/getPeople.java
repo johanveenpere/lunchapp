@@ -27,6 +27,7 @@ public class getPeople extends updateUI  {
         Activity activity = mWeakActivity.get();
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         ScrollView scrollview = activity.findViewById(R.id.mainView);
+        scrollview.removeAllViews();
         LinearLayout userList = new LinearLayout(activity);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         userList.setOrientation(LinearLayout.VERTICAL);
