@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popupparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lunchmates"
+            android:textSize="25sp"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
     <ScrollView
         android:id="@+id/mainView"
         android:layout_width="match_parent"
@@ -15,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="9"
+        android:background="?attr/colorButtonNormal"
         android:orientation="horizontal"
         android:visibility="visible">
 
@@ -22,18 +35,24 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="33" />
+            android:layout_weight="33"
+            android:background="?attr/colorButtonNormal"
+            android:src="@drawable/ic_peoplemenuicon" />
 
         <ImageButton
             android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="33" />
+            android:layout_weight="33"
+            android:background="?attr/colorButtonNormal"
+            android:src="@drawable/ic_lunches" />
 
         <ImageButton
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="33" />
+            android:layout_weight="33"
+            android:background="?attr/colorButtonNormal"
+            android:src="@drawable/ic_settings" />
     </LinearLayout>
 </LinearLayout>

@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorLunchArranged">#A4E9CC</color>
+    <color name="colorLunchArrangedLight">#D5ECE2</color>
+    <color name="colorLunchInviteToUser">#EBCFA7</color>
+    <color name="colorLunchInviteToUserLight">#EEE8DC</color>
+    <color name="colorLunchInviteFromUser">#A1BBE9</color>
+    <color name="colorLunchInviteFromUserLight">#D3D8E6</color>
+    <color name="colorCancel">#f11264</color>
+    <color name="colorAccept">#12F19F</color>
 </resources>

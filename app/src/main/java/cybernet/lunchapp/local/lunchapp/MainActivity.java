@@ -27,11 +27,13 @@ public class MainActivity extends Activity {
     String username;
     String password;
     final Activity context = this;
+    LinearLayout popupRoot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainlayout);
+        popupRoot = findViewById(R.id.popupparent);
         username = getIntent().getExtras().getString("username");
         password = getIntent().getExtras().getString("password");
         getPeople getPeopleInitQuery = new getPeople(this);
@@ -65,7 +67,7 @@ public class MainActivity extends Activity {
                }
         );
 
-        ImageButton showLunches = findViewById(R.id.button5);
+        ImageButton showLunches = findViewById(R.id.button6);
         showLunches.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View view){
@@ -84,7 +86,7 @@ public class MainActivity extends Activity {
                 }
         );
 
-        ImageButton showProfile = findViewById(R.id.button6);
+        ImageButton showProfile = findViewById(R.id.button5);
         //ScrollView lounad = new ScrollView(this);
         //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         //params.setMargins(0,20,0,20);
